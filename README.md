@@ -1,8 +1,21 @@
-# Voice AI UK
+# Voice AI UK 🤖📞
 
-AI Voice Receptionist Service for UK Businesses - MVP
+> AI Voice Receptionist for UK Businesses
 
-## Quick Start
+Automate your phone lines with AI. Never miss a call again.
+
+---
+
+## 📚 Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [INDEX.md](docs/INDEX.md) | Code navigation - find anything fast |
+| [DEPLOYMENT.md](docs/DEPLOYMENT.md) | Step-by-step deployment to Vercel |
+
+---
+
+## 🚀 Quick Start
 
 ```bash
 # 1. Install dependencies
@@ -10,7 +23,6 @@ npm install
 
 # 2. Set up environment
 cp .env.example .env
-# Edit .env with your credentials
 
 # 3. Set up database
 npx prisma generate
@@ -20,106 +32,203 @@ npx prisma db push
 npm run dev
 ```
 
-## Tech Stack
+Visit http://localhost:3000
 
-- **Frontend:** Next.js 14, React, Tailwind CSS
-- **Backend:** Next.js API Routes
-- **Database:** PostgreSQL (Supabase)
-- **ORM:** Prisma
-- **Auth:** NextAuth.js
-- **Voice:** Vapi.ai
-- **Phone:** Twilio UK
+---
 
-## Project Structure
+## 🏗️ Architecture
 
 ```
-├── app/                 # Next.js App Router
-│   ├── page.tsx        # Landing page
-│   ├── dashboard/      # User dashboard
-│   ├── auth/           # Auth pages
-│   ├── builder/        # Agent builder
-│   └── api/            # API routes
-├── components/         # React components
-├── lib/               # Utilities (auth, prisma, twilio)
-├── prisma/            # Database schema
-└── public/            # Static assets
+┌─────────────────────────────────────────────────────────────┐
+│                      USER LAYER                          │
+│  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌─────────┐ │
+│  │ Landing │  │Dashboard │  │ Builder │  │  Auth  │ │
+│  └─────────┘  └──────────┘  └─────────┘  └─────────┘ │
+└────────────────────────┬────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      API LAYER                             │
+│  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌─────────┐  │
+│  │ Agents │  │  Calls  │  │ Analytics│  │ Settings│  │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘  │
+└───────┼─────────────┼─────────────┼─────────────┼────────┘
+        │             │             │             │
+        ▼             ▼             ▼             ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   SERVICES LAYER                          │
+│  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌─────────┐  │
+│  │ Twilio │  │  Vapi   │  │Calendar │  │  SMS   │  │
+│  │ (Phone)│  │(Voice AI)│ │(Booking)│  │(Notify)│  │
+│  └─────────┘  └──────────┘  └─────────┘  └─────────┘  │
+└────────────────────────┬────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   DATABASE LAYER                           │
+│                 PostgreSQL (Supabase)                     │
+│  ┌─────────┐  ┌──────────┐  ┌─────────┐  ┌─────────┐  │
+│  │ Tenant │  │   User   │  │  Agent  │  │  Call  │  │
+│  └─────────┘  └──────────┘  └─────────┘  └─────────┘  │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## Features (MVP)
+---
 
-### Completed ✅
-- [x] User authentication (login/register)
-- [x] Tenant (business) management
-- [x] AI Agent creation with templates
-- [x] Visual flow builder
-- [x] Knowledge base (file upload)
-- [x] Call logging & analytics
-- [x] Settings management
+## 📁 Project Structure
 
-### In Progress 🚧
-- [ ] Test center
-- [ ] UK phone numbers (+44)
-- [ ] Calendar integration (Google, Cal.com)
-- [ ] Email notifications
-
-## Environment Variables
-
-```env
-# Database
-DATABASE_URL=
-
-# NextAuth
-NEXTAUTH_URL=
-NEXTAUTH_SECRET=
-
-# Supabase
-SUPABASE_URL=
-SUPABASE_ANON_KEY=
-
-# Twilio
-TWILIO_ACCOUNT_SID=
-TWILIO_AUTH_TOKEN=
-TWILIO_PHONE_NUMBER=
-
-# Vapi
-VAPI_API_KEY=
-VAPI_PRIVATE_KEY=
+```
+voice-ai-uk/
+├── app/                     # Next.js App Router
+│   ├── page.tsx            # Landing page
+│   ├── dashboard/          # User dashboard
+│   │   ├── page.tsx       # Main dashboard
+│   │   ├── calls/         # Call logs
+│   │   ├── analytics/    # Stats & charts
+│   │   ├── settings/      # User settings
+│   │   └── new/          # Create agent
+│   ├── auth/              # Login/Register
+│   ├── builder/           # Agent builder
+│   │   └── [agentId]/    # Edit specific agent
+│   └── api/              # API routes
+│       ├── auth/          # NextAuth
+│       ├── agents/        # Agent CRUD
+│       ├── calls/         # Call logs
+│       ├── analytics/     # Stats
+│       └── voice/         # Twilio webhook
+│
+├── components/            # React components
+│   └── builder/          # Builder UI
+│
+├── lib/                   # Backend utilities (ALPHABETICAL)
+│   ├── auth.ts           # Authentication helpers
+│   ├── calendar.ts       # Google/Cal.com
+│   ├── prisma.ts        # Database client
+│   ├── sms.ts           # Twilio SMS
+│   ├── twilio.ts       # Phone numbers
+│   ├── vapi.ts         # Voice AI
+│   └── webhooks.ts     # CRM integrations
+│
+├── prisma/               # Database
+│   └── schema.prisma    # All tables
+│
+└── docs/                 # Documentation
+    ├── INDEX.md         # Code navigation
+    └── DEPLOYMENT.md   # Deploy guide
 ```
 
-## Deployment
+---
 
-### Vercel (Recommended)
+## 🔧 Tech Stack
 
-1. Push to GitHub:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/voice-ai-uk.git
-   git push -u origin master
-   ```
+| Layer | Technology | Purpose |
+|-------|------------|---------|
+| Frontend | Next.js 14, React | UI |
+| Styling | Tailwind CSS | Design |
+| Backend | Next.js API | Server logic |
+| Database | PostgreSQL (Supabase) | Storage |
+| ORM | Prisma | DB access |
+| Auth | NextAuth.js | Sessions |
+| Voice | Vapi.ai | AI calls |
+| STT | Deepgram | Speech-to-text |
+| TTS | ElevenLabs | Text-to-speech |
+| Phone | Twilio | UK numbers |
+| Hosting | Vercel | Deployment |
 
-2. Import project in Vercel dashboard
-3. Add environment variables
-4. Deploy!
+---
 
-### Manual Build
+## ✅ Features
 
-```bash
-npm run build
-# Output in .next folder
-```
+### Complete
+- User registration & login
+- Tenant (business) management
+- AI Agent creation (4 templates)
+- Dashboard with stats
+- Call logging
+- Analytics charts
 
-## API Endpoints
+### Ready to Use
+- Phone number purchase
+- Voice webhook
+- Calendar booking
+- SMS notifications
+- CRM webhooks
+
+---
+
+## 🌐 API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/auth/register` | User registration |
-| POST | `/api/auth/[...nextauth]` | Authentication |
+| POST | `/api/auth/register` | Create account |
+| POST | `/api/auth/[...nextauth]` | Login/logout |
 | GET/POST | `/api/agents` | List/Create agents |
-| GET/PUT/DELETE | `/api/agents/[id]` | Agent CRUD |
-| GET | `/api/calls` | Call logs |
-| GET | `/api/analytics` | Analytics data |
+| GET/PATCH/DELETE | `/api/agents/[id]` | Manage agent |
+| GET | `/api/calls` | Call history |
+| GET | `/api/analytics` | Stats |
 | GET/PUT | `/api/settings` | User settings |
-| POST | `/api/voice/webhook` | Voice webhook handler |
+| POST | `/api/voice/webhook` | Handle calls |
 
-## License
+---
+
+## 🔐 Environment Variables
+
+```env
+# Database (Supabase)
+DATABASE_URL="postgresql://..."
+
+# Auth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="random-string"
+
+# Voice AI
+VAPI_API_KEY="xxx"
+
+# Phone
+TWILIO_ACCOUNT_SID="xxx"
+TWILIO_AUTH_TOKEN="xxx"
+TWILIO_PHONE_NUMBER="+447xxx"
+
+# Calendar (optional)
+GOOGLE_CLIENT_ID="xxx"
+GOOGLE_CLIENT_SECRET="xxx"
+```
+
+---
+
+## 🚢 Deployment
+
+See [DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed steps.
+
+TL;DR:
+1. Push to GitHub
+2. Import to Vercel
+3. Add env vars
+4. Deploy!
+
+---
+
+## 📖 Finding Things
+
+**Use `docs/INDEX.md`** - It's a map of the entire codebase!
+
+```bash
+# Search for something specific
+grep -r "functionName" --include="*.ts"
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a feature branch
+3. Make changes
+4. Test locally
+5. Push & PR
+
+---
+
+## 📄 License
 
 MIT

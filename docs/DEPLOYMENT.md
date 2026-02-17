@@ -159,11 +159,12 @@ After deployment:
 - Ensure NEXTAUTH_SECRET is set
 - Check NEXTAUTH_URL matches your domain
 
-## Custom Domain (Optional)
+## Custom Domain
 
-1. Vercel → Settings → Domains
+1. Go to Vercel → Settings → Domains
 2. Add your domain
 3. Update DNS records as instructed
+4. See [DOMAIN_SSL.md](DOMAIN_SSL.md) for detailed step-by-step guide
 
 ---
 
