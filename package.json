@@ -23,6 +23,7 @@
     "react-hook-form": "^7.x",
     "tailwind-merge": "^2.x",
     "tailwindcss": "^3.x",
+    "twilio": "^5.12.1",
     "zod": "^3.x",
     "zustand": "^4.x"
   },

@@ -36,7 +36,7 @@ export async function searchUKNumbers(areaCode: string = '20', limit: number = 1
   try {
     const numbers = await client.availablePhoneNumbers('GB')
       .local.list({
-        areaCode,
+        areaCode: parseInt(areaCode),
         limit,
         smsEnabled: true,
         voiceEnabled: true,

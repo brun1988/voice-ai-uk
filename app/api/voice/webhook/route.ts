@@ -60,8 +60,9 @@ export async function POST(request: Request) {
       )
     }
 
-    // Get the agent's greeting
-    const greeting = phoneNumber.agent.greeting || 'Hello, how can I help you today?'
+    // Get the agent's greeting (with null safety)
+    const agent = phoneNumber.agent
+    const greeting = agent?.greeting || 'Hello, how can I help you today?'
 
     // Get Vapi configuration
     const vapiEndpoint = process.env.VAPI_WEBHOOK_URL || 'https://api.vapi.ai'
