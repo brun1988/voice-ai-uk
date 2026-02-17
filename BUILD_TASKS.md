@@ -122,15 +122,14 @@ For each task, create:
 
 ---
 
-## ✅ PROJECT COMPLETE
+## ✅ PROJECT COMPLETE - CODE READY FOR DEPLOYMENT
 
-All phases completed successfully! The Voice AI UK platform is ready for deployment.
-
-### Build Verification (2026-02-17 21:18)
+### Build Verification (2026-02-17 22:03)
 - Production build: SUCCESS ✅
 - 17 routes (9 static, 8 dynamic)
 - All dependencies installed
 - No build errors
+- Added `deploy.sh` helper script
 
 ### What's Built
 - Full-stack Next.js 14 app with authentication
@@ -142,10 +141,21 @@ All phases completed successfully! The Voice AI UK platform is ready for deploym
 - Settings management
 - Production-ready Vercel deployment config
 
-### Next Steps (for Jon)
-1. Create GitHub repo and push: `git remote add origin <repo-url> && git push -u origin master`
-2. Deploy to Vercel
-3. Configure environment variables in Vercel
-4. Set up custom domain (see docs/DOMAIN_SSL.md)
-5. Add Twilio + Vapi API keys
-6. Launch! 🚀
+### Remaining: Manual Setup (Jon needs to do)
+
+1. **Create GitHub repo:**
+   - Go to https://github.com/new
+   - Create `voice-ai-uk` repo
+   - Run: `git remote add origin https://github.com/YOUR_USERNAME/voice-ai-uk.git`
+   - Run: `git branch -M main && git push -u origin main`
+
+2. **Deploy to Vercel:**
+   - Import repo at https://vercel.com
+   - Add environment variables (see docs/DEPLOYMENT.md)
+
+3. **Configure services:**
+   - Supabase (PostgreSQL)
+   - Twilio (voice calls)
+   - Vapi (voice AI)
+
+### Run `deploy.sh` for quick reference
