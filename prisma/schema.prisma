@@ -1,0 +1,156 @@
+// UK Voice AI - Prisma Schema
+// Database for AI Voice Receptionist Service
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum UserRole {
+  owner
+  admin
+  member
+  viewer
+}
+
+enum AgentStatus {
+  draft
+  active
+  paused
+  archived
+}
+
+enum CallStatus {
+  ringing
+  in_progress
+  completed
+  failed
+  voicemail
+}
+
+// Tenants (businesses)
+model Tenant {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  users         User[]
+  agents        Agent[]
+  phoneNumbers  PhoneNumber[]
+  calls         CallLog[]
+}
+
+// Users
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String?   // Hashed password for credentials auth
+  name          String?
+  image         String?
+  role          UserRole  @default(owner)
+  tenantId      String
+  tenant        Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([tenantId])
+}
+
+// AI Agents
+model Agent {
+  id            String      @id @default(cuid())
+  name          String
+  description   String?
+  status        AgentStatus @default(draft)
+  template      String?     // real_estate, restaurant, healthcare, custom
+  tenantId      String
+  tenant        Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  // Voice config
+  voiceId       String?
+  greeting      String?
+  
+  // Flow
+  flowData      Json?       // Visual flow nodes
+  
+  // Knowledge base
+  knowledgeBase KnowledgeBase?
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  calls         CallLog[]
+  phoneNumbers  PhoneNumber[]
+  
+  @@index([tenantId])
+}
+
+// Knowledge Base
+model KnowledgeBase {
+  id          String   @id @default(cuid())
+  agentId     String   @unique
+  agent       Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  documents   Json?    // Array of document references
+  faqs        Json?    // Array of FAQ Q&A pairs
+  websiteUrl  String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Phone Numbers
+model PhoneNumber {
+  id          String   @id @default(cuid())
+  number      String   // +447xxx format
+  sid         String?  // Twilio SID
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  agentId     String?
+  agent       Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  calls       CallLog[]
+  
+  @@unique([number, tenantId])
+  @@index([tenantId])
+}
+
+// Call Logs
+model CallLog {
+  id              String      @id @default(cuid())
+  callSid         String?     // Twilio Call SID
+  tenantId        String
+  tenant          Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  agentId         String
+  agent           Agent       @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  phoneNumberId   String
+  phoneNumber     PhoneNumber @relation(fields: [phoneNumberId], references: [id], onDelete: Cascade)
+  
+  status          CallStatus
+  duration        Int?        // seconds
+  recordingUrl    String?
+  transcript      String?
+  
+  // Call details
+  callerNumber   String?
+  direction      String?     // inbound, outbound
+  outcome        String?     // booked, qualified, voicemail, etc.
+  
+  // Metadata
+  startedAt      DateTime    @default(now())
+  endedAt        DateTime?
+  
+  @@index([tenantId])
+  @@index([agentId])
+  @@index([startedAt])
+}

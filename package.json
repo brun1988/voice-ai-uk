@@ -1,0 +1,36 @@
+{
+  "name": "voice-ai-uk",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.x",
+    "@supabase/supabase-js": "^2.x",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.x",
+    "lucide-react": "^0.x",
+    "next": "14.x",
+    "next-auth": "^4.x",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.x",
+    "tailwind-merge": "^2.x",
+    "tailwindcss": "^3.x",
+    "zod": "^3.x",
+    "zustand": "^4.x"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.x",
+    "@types/react": "^18.x",
+    "prisma": "^5.x",
+    "typescript": "^5.x"
+  }
+}
