@@ -3,19 +3,19 @@ node_modules/
 .pnp
 .pnp.js
 
-# Build
-.next/
-out/
-build/
-dist/
-
 # Testing
 coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
 
 # Misc
 .DS_Store
 *.pem
-*.log
 
 # Debug
 npm-debug.log*
@@ -41,3 +41,14 @@ next-env.d.ts
 .vscode/
 *.swp
 *.swo
+
+# Prisma
+prisma/migrations/
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+logs
+*.log
