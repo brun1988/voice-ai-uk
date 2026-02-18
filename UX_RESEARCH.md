@@ -1,163 +1,239 @@
-# Synthflow AI - UX Research Document
+# Synthflow UX Research
 
-**Date:** February 18, 2026  
-**Researcher:** Sub-agent (UX Researcher)  
-**Source:** Public marketing website (synthflow.ai)
-
----
-
-## ⚠️ Important Note
-
-**Access Limitation:** The actual Synthflow application dashboard requires authentication and was not publicly accessible. This research is based on:
-1. The public marketing website
-2. Interactive demo elements visible on the landing page
-3. Product screenshots and UI descriptions in marketing materials
+> Research Date: February 18, 2026
+> Source: synthflow.ai (Marketing site + CSS analysis)
 
 ---
 
-## 1. Observed UI Elements (From Interactive Demo)
+## Overview
 
-### Navigation Structure
-- **Tabs:** "Flow View" / "Prompt View" toggle for agent configuration
-- **Mode Selection:** Clear tab-based navigation for switching views
-- **Section Headers:** Global Settings, Knowledge Base, Actions
-
-### Card-Based Layouts
-The demo interface uses card-based components:
-
-- **Agent Cards:** Display agent type (e.g., "Lead Qualification · Buyer")
-- **Feature Tags:** #Real-Time Booking, #Lead Qualification, #Receptionist
-- **Knowledge Base Cards:** Upload Files, Web Content Import, Connect CRM
-- **Action Cards:** Real-Time Booking, Warm Transfer, IVR (toggle-enabled)
-
-### Visual Style (From Demo UI)
-- **Clean, modern aesthetic** with clear visual hierarchy
-- **Toggle switches** for enabling/disabling features
-- **Form-like sections** for configuration (Who You Are, Greeting Message, etc.)
-- **Accordion-style expandable sections** for flow logic
+Synthflow is a Voice AI platform for automating phone calls. The marketing site is built on **Webflow** and provides insights into their design system. Note: The actual app dashboard (at fine-tuner.ai/auth) was not directly accessible for deep inspection, but the marketing site reveals the core design language.
 
 ---
 
-## 2. Color Scheme (Inferred from Marketing Site)
+## Color Palette
 
-Based on the website branding:
+### Primary Colors
+| Name | Hex | Usage |
+|------|-----|-------|
+| Dark Purple | `#110229` | Primary text, dark backgrounds |
+| Darker Purple | `#1e0a45` | Hero sections, gradients |
+| Violet | `#5b0dd5` | Primary accent, CTAs |
+| Violet-600 | `#502d95` | Secondary accents |
+| Violet-1 (Light) | `#f3f2f5` | Light backgrounds |
 
-| Element | Color |
-|---------|-------|
-| Primary Brand | Deep Purple/Violet (#6B46C1 approx) |
-| Accent | Bright Blue/Cyan |
-| Background | White (#FFFFFF) with light gray sections |
-| Text | Dark gray (#1A202C) for headings |
-| Secondary Text | Medium gray (#4A5568) |
-| Tags/Badges | Teal, Purple, Blue variations |
+### Neutral Colors
+| Name | Hex | Usage |
+|------|-----|-------|
+| Pure White | `#ffffff` | Cards, content backgrounds |
+| Grey 3 | `#e3e3e3` | Borders, dividers |
+| Dark Grey | `#A0A0A0` | Secondary text |
+| Text Dark Grey | `#110229` | Primary text |
 
-### CTA Button Colors
-- **Primary:** Solid purple/violet with white text
-- **Secondary:** Outlined buttons with purple border
-- **Hover States:** Slight darkening on buttons
-
----
-
-## 3. Typography
-
-- **Headings:** Bold, modern sans-serif (likely Inter, SF Pro, or similar)
-- **Body:** Clean sans-serif, good readability
-- **Code/Prompts:** Monospace font for prompt editor view
+### Gradient Examples
+- Hero backgrounds: `linear-gradient(176deg, #1e0a45, #200b4b 23%, #502d95 73%, #7e5ac6 100%)`
+- Dark sections: Purple-to-darker purple gradients
 
 ---
 
-## 4. Observed Page Structures
+## Typography
 
-### Landing Page Sections
-1. Hero with product value proposition
-2. Interactive demo section (Flow Preview)
-3. Feature highlights (BELL Framework)
-4. Industry use cases (cards)
-5. Pricing calculator
-6. FAQ accordion
+### Font Families
+- **Primary Body**: `Geist, Arial, sans-serif`
+- **Mono/Label**: `"Reddit Mono", Arial, sans-serif`
 
-### Interactive Demo Interface
-- Left panel: Agent configuration (flow steps)
-- Right panel: Live preview/testing
-- Tab navigation: Flow View | Prompt View
+### Type Scale (Desktop)
+| Element | Size | Weight | Line Height |
+|---------|------|--------|-------------|
+| H1 | 48px (large: 50px) | 600+ | 1.1 |
+| H2 | 36px | 600+ | 1.2 |
+| H3 | 28px | 500+ | 1.3 |
+| Body Large | 20px | 400 | 1.5 |
+| Body | 16px | 400 | 1.5 |
+| Small | 14px | 400 | 1.4 |
+| Mono | 11-13px | 400 | - |
+
+### Type Scale (Mobile - 767px breakpoint)
+| Element | Size |
+|---------|------|
+| H1 | 40px |
+| H2 | 32px |
+| H3 | 28px |
+| Body | 16px |
 
 ---
 
-## 5. Mobile Responsiveness
+## Navigation Structure
 
-**Status:** Could not verify from available data
+### Desktop Navigation
+- **Type**: Top navbar with dropdown menus
+- **Layout**: Horizontal links with hamburger on mobile
+- **Items**: Solutions, Features, Pricing, Resources, Case Studies
+- **CTA**: "Talk to Sales" button (primary), "Log in" link
 
-The marketing site appears responsive, but the actual app dashboard mobile experience could not be verified without access.
+### Mobile Navigation
+- **Hamburger menu**: Collapses to hamburger icon
+- **Full-screen overlay**: Dropdown menus slide in
+- **Touch-friendly**: Large tap targets (min 44px)
 
 ---
 
-## 6. Key UI Patterns Observed
+## Button Styles
 
-### Toggle Switches
-Used for enabling features (Actions section)
-```
-[Enabled] Real-Time Booking
-[Enabled] Warm Transfer
-[Enabled] IVR
+### Primary Button
+```css
+/* Example from CSS */
+padding: 1.375rem 2.5rem;  /* Large padding */
+border-radius: 0.5rem;      /* Rounded corners */
+font-weight: 500;
+transition: all 0.2s ease;
 ```
 
-### Expandable Sections
-- "Select a mode" with dropdown/tabs
-- Collapsible flow logic sections
+### Button Variants
+- **Primary**: Violet background (`#5b0dd5`), white text
+- **Secondary**: White background, violet border
+- **Ghost**: Transparent, violet text
+- **Full-width (mobile)**: 100% width on mobile
 
-### Form Inputs
-- Text areas for prompts (Who You Are)
-- Clear labels and placeholders
-
-### Card Grid
-- Industry use cases displayed in card grid
-- Each card: icon + title + description + CTA
+### Button States
+- Hover: Slight brightness increase
+- Active: Scale down slightly (0.98)
+- Focus: Visible outline for accessibility
 
 ---
 
-## 7. Recommendations for Voice AI UK Implementation
+## Card Designs
 
-Based on Synthflow's observed patterns:
+### Feature Cards
+- Background: White (`#ffffff`)
+- Border: Light grey (`#e3e3e3`)
+- Border-radius: `1rem` (16px)
+- Padding: `2rem`
+- Shadow: `0 4px 12px -4px rgba(0,0,0,0.07)` (subtle)
 
-### Navigation
-- Use **tab-based navigation** for different views (Flow/Prompt)
-- Consider **sidebar navigation** for main dashboard sections
+### Use Case Cards
+- Border-radius: `1.25rem` (20px)
+- Hover: Lift effect with shadow increase
+- Icon: 40-48px with rounded container
 
-### Cards
-- Use **card-based layouts** for agent templates
-- Include **tag badges** for categorization
+### Testimonial Cards
+- Border-radius: `1rem`
+- Shadow: Subtle, layered
+- Avatar: 64px circular
+
+---
+
+## Layout & Spacing
+
+### Container Max Widths
+- Standard content: `1200px`
+- Wide sections: Full width with max constraint
+
+### Spacing System (8px base)
+| Name | Value |
+|------|-------|
+| gap-5 | 5px |
+| gap-10 | 10px |
+| gap-16 | 16px |
+| gap-24 | 24px |
+| gap-32 | 32px |
+| gap-40 | 40px |
+| gap-60 | 60px |
+| gap-80 | 80px |
+
+### Section Padding
+- Standard: `80px` vertical
+- Large: `120px` vertical
+- Mobile: `60px` vertical
+
+---
+
+## Mobile Responsiveness
+
+### Breakpoints
+| Name | Width |
+|------|-------|
+| Mobile | < 480px |
+| Landscape Mobile | < 767px |
+| Tablet | < 991px |
+| Desktop | >= 991px |
+
+### Mobile Adaptations
+
+1. **Navigation**
+   - Hamburger menu at `767px`
+   - Full-width dropdowns
+   - Touch-friendly tap targets (44px+)
+
+2. **Layout Changes**
+   - Grid columns reduce: 3-col → 2-col → 1-col
+   - `grid-template-columns: 1fr` for full-width stacking
+   - Padding reduces from 40px to 20px
+
+3. **Typography**
+   - H1: 48px → 40px (mobile)
+   - Body: 16px stays consistent
+   - Line heights tighten on mobile
+
+4. **Buttons**
+   - Full-width on mobile: `width: 100%`
+   - Height: `3rem` (48px) minimum for touch
+   - Padding reduces: `padding: 0.5rem 1rem`
+
+5. **Cards**
+   - Stack vertically
+   - Border-radius maintained but margins reduce
+   - No horizontal scroll required
+
+6. **Touch Optimization**
+   - Swipeable carousels (Swiper.js)
+   - Large tap targets
+   - No hover-dependent interactions
+
+---
+
+## UI Patterns
+
+### Dropdowns
+- Animated open/close (transform + opacity)
+- Backdrop blur on overlays
+- Chevron rotation on open
 
 ### Forms
-- Use **clear section headers** (Global Settings, etc.)
-- Include **toggle switches** for feature enablement
+- Input height: `3rem` (48px)
+- Border-radius: `0.5rem`
+- Focus: Violet border glow
 
-### Visual Style
-- Clean, modern aesthetic with purple/violet accent
-- Generous whitespace
-- Clear visual hierarchy
+### Modals
+- Centered with backdrop blur
+- Max-width: `600px`
+- Slide-in animation
 
----
+### Tabs
+- Horizontal scrollable on mobile
+- Active state: Underline + bold
 
-## 8. What Could Not Be Verified
-
-- ❌ Actual app dashboard login/auth flow
-- ❌ Main navigation (sidebar vs top nav)
-- ❌ Exact button styles (border-radius, shadows)
-- ❌ Mobile responsive behavior
-- ❌ Dashboard home screen layout
-- ❌ Analytics/reporting UI
+### Cards Grid
+- CSS Grid: `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))`
+- Gap: `24px` to `40px`
 
 ---
 
-## 9. Suggested Next Steps
+## Key Takeaways for Implementation
 
-To complete this UX research:
-
-1. **Get dashboard access:** Create a trial account to explore the actual app
-2. **Screen recording:** Capture the full dashboard for detailed analysis
-3. **Mobile testing:** Access on mobile device or responsive mode
-4. **Ask Synthflow:** Contact their sales team for demo access
+1. **Use CSS Variables** for theming consistency
+2. **8px spacing grid** aligns with modern practices
+3. **Mobile-first breakpoints** at 480px, 767px, 991px
+4. **Touch targets minimum 44px** for accessibility
+5. **Rounded corners** (`0.5rem` - `1.25rem`) for friendly feel
+6. **Purple gradient accents** for premium tech feel
+7. **Geist font** for modern, clean typography
 
 ---
 
-*Document created by UX Researcher sub-agent*
+## Notes
+
+- This research covers the **marketing website** design
+- The actual app (dashboard) may differ - fine-tuner.ai/auth was not accessible
+- Webflow provides the underlying framework with custom CSS overrides
+- Consider requesting access to the actual app for deeper dashboard UI analysis
