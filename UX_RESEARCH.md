@@ -1,46 +1,103 @@
-# Synthflow UX Research
+# Synthflow UX Research - Limited Findings
 
-Documenting Synthflow's design patterns to emulate in Voice AI UK.
+**Date:** February 18, 2026
+**Status:** INCOMPLETE - Dashboard requires authentication
 
-## Color Scheme
-- **Primary Blue:** #2563EB (blue-600)
-- **Secondary Purple:** #7C3AED (violet-600)  
-- **Background:** #0F172A (slate-900) for dark mode, #F8FAFC (slate-50) for light
-- **Accent:** #10B981 (emerald-500) for success states
-- **Text:** #F1F5F9 (slate-100) on dark, #1E293B (slate-800) on light
+---
 
-## Typography
-- **Font:** Inter (sans-serif)
-- **Headings:** Bold, larger sizes (2xl for h1)
-- **Body:** Regular, readable size (16px base)
+## Research Limitations
 
-## Navigation
-- **Dark sidebar** with icon + label navigation
-- **Active state:** Blue background (#1E40AF), white text
-- **Hover state:** Slightly lighter background
-- **Icons:** Heroicons or similar outline style
+- The actual Synthflow dashboard (app.synthflow.ai) requires login
+- Could not access the authenticated app interface
+- Web fetch only extracted marketing/content pages, not the actual app UI
+- **Recommendation:** Need manual login or screenshots from the user to complete this research
 
-## Buttons
-- **Primary:** Blue gradient, rounded-lg, shadow
-- **Secondary:** White bg with border
-- **Hover:** Darker shade, slight scale transform
-- **Border radius:** 8-12px (rounded-lg)
+---
 
-## Cards
-- **White background** with subtle border
-- **Shadow:** sm or none, subtle
-- **Padding:** 6 (24px)
-- **Border radius:** 12-16px
+## What Was Examined
 
-## Mobile Responsiveness
-- Hamburger menu for navigation
-- Stacked grids (1 column on mobile, 2-4 on desktop)
-- Touch-friendly button sizes (min 44px)
-- Padding reduced on mobile
+1. **Main Website:** https://synthflow.ai
+2. **Pricing Page:** https://synthflow.ai/pricing
+3. **Auth Page:** https://fine-tuner.ai/auth (login/signup)
+4. **Help Docs:** https://help.synthflow.ai (GitBook)
 
-## UI Patterns
-- Stats in colored boxes with icons
-- Quick action cards with icons
-- Tables with rounded corners
-- Clear page headers with descriptions
-- Gradient accents on CTAs
+---
+
+## Partial Findings from Marketing Pages
+
+### Visual Style Indicators
+- Clean, modern SaaS aesthetic
+- Professional color scheme (dark backgrounds with accent colors)
+- Card-based layout for use cases (Real Estate, E-Commerce, Healthcare)
+- Interactive flow builder preview on homepage
+
+### Color Scheme (Inferred from Content)
+- Dark theme likely (based on "Bell Framework" section visibility)
+- Accent colors: Purple/violet tones (common in AI SaaS)
+- White text on dark backgrounds
+
+### Navigation (from content structure)
+- Top navigation with: Product, Pricing, Enterprise, Resources, Login
+- Main sections: Build, Evaluate, Launch, Learn (BELL Framework)
+- Industry solutions as main navigation items
+
+### Key UI Elements Mentioned
+- **Flow Designer** - Visual flow builder
+- **Test Center** - For testing agents
+- **Auto-QA** - Monitoring dashboard
+- **Knowledge Base** - File upload, Web Content Import, CRM connections
+- **Actions Panel** - Real-Time Booking, Warm Transfer, IVR, Custom Actions
+
+---
+
+## Missing Information - Needs Manual Access
+
+To complete this research, need access to the actual app:
+
+1. **Dashboard Layout**
+   - Sidebar navigation structure
+   - Main content area design
+   - Header/footer components
+
+2. **Color Palette**
+   - Exact hex codes
+   - Primary/secondary/accent colors
+
+3. **Typography**
+   - Font families
+   - Font sizes and weights
+
+4. **Component Styles**
+   - Button styles (rounded corners, shadows, etc.)
+   - Card designs
+   - Form inputs
+
+5. **Mobile Responsiveness**
+   - Hamburger menu implementation
+   - Stacked layouts
+   - Touch-friendly button sizes
+
+---
+
+## How to Complete This Research
+
+**Option 1:** Log into the app at https://fine-tuner.ai/auth and provide screenshots
+
+**Option 2:** Grant browser access to app.synthflow.ai for direct inspection
+
+**Option 3:** Share screenshots from the Synthflow demo/your account
+
+---
+
+## Next Steps
+
+Once dashboard access is provided, I can:
+- Extract exact color hex codes
+- Document font specifications
+- Map navigation structure
+- Detail all UI components
+- Analyze mobile responsiveness patterns
+
+---
+
+*Research incomplete - awaiting dashboard access*
