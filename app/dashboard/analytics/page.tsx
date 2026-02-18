@@ -135,12 +135,12 @@ export default function AnalyticsPage() {
   })) || []
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="p-8">
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="/dashboard" className="text-gray-500 hover:text-gray-700">
+            <a href="/dashboard" className="text-slate-500 hover:text-gray-700">
               ← Back
             </a>
             <h1 className="text-xl font-bold">Analytics</h1>
@@ -172,19 +172,19 @@ export default function AnalyticsPage() {
             {/* Summary Stats */}
             <div className="grid md:grid-cols-4 gap-4 mb-8">
               <div className="bg-white p-6 rounded-xl border">
-                <div className="text-sm text-gray-500 mb-1">Total Calls</div>
+                <div className="text-sm text-slate-500 mb-1">Total Calls</div>
                 <div className="text-3xl font-bold">{analytics?.summary.totalCalls || 0}</div>
               </div>
               <div className="bg-white p-6 rounded-xl border">
-                <div className="text-sm text-gray-500 mb-1">Answer Rate</div>
+                <div className="text-sm text-slate-500 mb-1">Answer Rate</div>
                 <div className="text-3xl font-bold">{analytics?.summary.answerRate || 0}%</div>
               </div>
               <div className="bg-white p-6 rounded-xl border">
-                <div className="text-sm text-gray-500 mb-1">Voicemails</div>
+                <div className="text-sm text-slate-500 mb-1">Voicemails</div>
                 <div className="text-3xl font-bold">{analytics?.summary.voicemails || 0}</div>
               </div>
               <div className="bg-white p-6 rounded-xl border">
-                <div className="text-sm text-gray-500 mb-1">Avg Duration</div>
+                <div className="text-sm text-slate-500 mb-1">Avg Duration</div>
                 <div className="text-3xl font-bold">
                   {formatDuration(analytics?.summary.avgDurationSeconds || 0)}
                 </div>
@@ -217,7 +217,7 @@ export default function AnalyticsPage() {
                         <div key={agent.agentId}>
                           <div className="flex justify-between text-sm mb-1">
                             <span className="font-medium">{agent.agentName}</span>
-                            <span className="text-gray-500">{agent.count} calls</span>
+                            <span className="text-slate-500">{agent.count} calls</span>
                           </div>
                           <div className="w-full bg-gray-100 rounded-full h-2">
                             <div 

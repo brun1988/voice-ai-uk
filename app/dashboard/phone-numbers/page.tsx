@@ -192,11 +192,11 @@ export default function PhoneNumbersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="p-8 p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Phone Numbers</h1>
+          <h1 className="text-3xl font-bold text-slate-900">Phone Numbers</h1>
           <p className="text-gray-600 mt-2">
             Manage your UK phone numbers and configure AI agent routing
           </p>
@@ -218,7 +218,7 @@ export default function PhoneNumbersPage() {
             className={`pb-3 px-1 ${
               activeTab === 'owned'
                 ? 'border-b-2 border-blue-600 text-blue-600 font-medium'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-slate-500 hover:text-gray-700'
             }`}
           >
             My Numbers ({purchasedNumbers.length})
@@ -228,7 +228,7 @@ export default function PhoneNumbersPage() {
             className={`pb-3 px-1 ${
               activeTab === 'search'
                 ? 'border-b-2 border-blue-600 text-blue-600 font-medium'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-slate-500 hover:text-gray-700'
             }`}
           >
             Search & Buy
@@ -239,9 +239,9 @@ export default function PhoneNumbersPage() {
         {activeTab === 'owned' && (
           <div className="bg-white rounded-lg shadow">
             {loading ? (
-              <div className="p-8 text-center text-gray-500">Loading...</div>
+              <div className="p-8 text-center text-slate-500">Loading...</div>
             ) : purchasedNumbers.length === 0 ? (
-              <div className="p-8 text-center text-gray-500">
+              <div className="p-8 text-center text-slate-500">
                 <p>No phone numbers yet.</p>
                 <button
                   onClick={() => setActiveTab('search')}
@@ -256,8 +256,8 @@ export default function PhoneNumbersPage() {
                   <div key={num.sid} className="p-4">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <p className="text-xl font-semibold text-gray-900">{num.phoneNumber}</p>
-                        <p className="text-sm text-gray-500">SID: {num.sid}</p>
+                        <p className="text-xl font-semibold text-slate-900">{num.phoneNumber}</p>
+                        <p className="text-sm text-slate-500">SID: {num.sid}</p>
                       </div>
                       <button
                         onClick={() => releaseNumber(num.sid, num.id)}
@@ -287,7 +287,7 @@ export default function PhoneNumbersPage() {
                             </option>
                           ))}
                         </select>
-                        {updating && <span className="text-sm text-gray-500">Updating...</span>}
+                        {updating && <span className="text-sm text-slate-500">Updating...</span>}
                       </div>
                       {num.agent ? (
                         <p className="text-sm text-green-600 mt-2">
@@ -368,7 +368,7 @@ export default function PhoneNumbersPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-500 mt-2">
+                <p className="text-sm text-slate-500 mt-2">
                   {selectedAgent 
                     ? 'Incoming calls will be handled by the selected AI agent.'
                     : 'Select an agent to route calls, or purchase without routing and configure later.'}
@@ -384,8 +384,8 @@ export default function PhoneNumbersPage() {
                   {availableNumbers.map((num) => (
                     <div key={num.phoneNumber} className="p-4 flex items-center justify-between">
                       <div>
-                        <p className="text-xl font-semibold text-gray-900">{num.phoneNumber}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xl font-semibold text-slate-900">{num.phoneNumber}</p>
+                        <p className="text-sm text-slate-500">
                           {num.locality}, {num.region} {num.postalCode}
                         </p>
                         <p className="text-sm text-gray-400">£{num.price}/month</p>

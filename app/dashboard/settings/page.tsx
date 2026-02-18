@@ -152,19 +152,19 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="p-8 flex items-center justify-center">
         <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full"></div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="p-8">
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="">
         <div className="max-w-3xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="/dashboard" className="text-gray-500 hover:text-gray-700">
+            <a href="/dashboard" className="text-slate-500 hover:text-gray-700">
               ← Back
             </a>
             <h1 className="text-xl font-bold">Settings</h1>
@@ -211,9 +211,9 @@ export default function SettingsPage() {
                   type="email"
                   value={settings?.user.email || ''}
                   disabled
-                  className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-500"
+                  className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-slate-500"
                 />
-                <p className="text-xs text-gray-500 mt-1">Email cannot be changed</p>
+                <p className="text-xs text-slate-500 mt-1">Email cannot be changed</p>
               </div>
               <button
                 type="submit"
@@ -304,9 +304,9 @@ export default function SettingsPage() {
                     type="text"
                     value={settings?.tenant.slug || ''}
                     disabled
-                    className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-500"
+                    className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-slate-500"
                   />
-                  <p className="text-xs text-gray-500 mt-1">Used in your public booking URL</p>
+                  <p className="text-xs text-slate-500 mt-1">Used in your public booking URL</p>
                 </div>
                 <button
                   type="submit"
@@ -327,7 +327,7 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between p-4 border rounded-lg">
               <div>
                 <div className="font-medium">Delete Account</div>
-                <div className="text-sm text-gray-500">Permanently delete your account and all data</div>
+                <div className="text-sm text-slate-500">Permanently delete your account and all data</div>
               </div>
               <button className="px-4 py-2 border border-red-600 text-red-600 rounded-lg hover:bg-red-50">
                 Delete

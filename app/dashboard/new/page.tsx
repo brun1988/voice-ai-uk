@@ -100,12 +100,12 @@ export default function NewAgentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="p-8 py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold">Create New Agent</h1>
-          <p className="text-gray-500 mt-2">
+          <p className="text-slate-500 mt-2">
             Choose a template to get started quickly
           </p>
         </div>
@@ -162,13 +162,13 @@ export default function NewAgentPage() {
               
               <div className="space-y-3">
                 <div>
-                  <span className="text-sm text-gray-500">Template:</span>
+                  <span className="text-sm text-slate-500">Template:</span>
                   <span className="ml-2 font-medium">
                     {templates.find(t => t.id === selectedTemplate)?.name}
                   </span>
                 </div>
                 <div>
-                  <span className="text-sm text-gray-500">Agent Name:</span>
+                  <span className="text-sm text-slate-500">Agent Name:</span>
                   <span className="ml-2 font-medium">{agentName}</span>
                 </div>
               </div>

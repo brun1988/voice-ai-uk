@@ -138,12 +138,12 @@ export default function CallLogsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="p-8">
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <a href="/dashboard" className="text-gray-500 hover:text-gray-700">
+            <a href="/dashboard" className="text-slate-500 hover:text-gray-700">
               ← Back
             </a>
             <h1 className="text-xl font-bold">Call Logs</h1>
@@ -207,7 +207,7 @@ export default function CallLogsPage() {
           {loading ? (
             <div className="p-12 text-center">
               <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-              <p className="text-gray-500">Loading calls...</p>
+              <p className="text-slate-500">Loading calls...</p>
             </div>
           ) : calls.length === 0 ? (
             <div className="p-12 text-center">
@@ -216,36 +216,36 @@ export default function CallLogsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">No calls yet</h3>
-              <p className="text-gray-500">Your AI agents haven't received any calls yet.</p>
+              <h3 className="text-lg font-medium text-slate-900 mb-1">No calls yet</h3>
+              <p className="text-slate-500">Your AI agents haven't received any calls yet.</p>
             </div>
           ) : (
             <>
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Date & Time
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Caller
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Agent
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Phone Number
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Outcome
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Duration
                     </th>
-                    <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="text-left px-6 py-3 text-xs font-medium text-slate-500 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -254,23 +254,23 @@ export default function CallLogsPage() {
                   {calls.map((call) => (
                     <tr key={call.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-slate-900">
                           {formatDateTime(call.startedAt)}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-slate-900">
                           {formatPhoneNumber(call.callerNumber)}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-slate-500">
                           {call.direction || 'Unknown direction'}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{call.agent.name}</div>
+                        <div className="text-sm text-slate-900">{call.agent.name}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-slate-900">
                           {formatPhoneNumber(call.phoneNumber.number)}
                         </div>
                       </td>
@@ -289,7 +289,7 @@ export default function CallLogsPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-slate-900">
                           {formatDuration(call.duration)}
                         </div>
                       </td>
@@ -327,7 +327,7 @@ export default function CallLogsPage() {
 
               {/* Total count */}
               {pagination && (
-                <div className="p-4 border-t bg-gray-50 text-sm text-gray-500">
+                <div className="p-4 border-t bg-gray-50 text-sm text-slate-500">
                   Showing {calls.length} of {pagination.total} calls
                 </div>
               )}
