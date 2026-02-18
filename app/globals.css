@@ -2,30 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Synthflow-inspired theme */
 :root {
-  /* Synthflow-inspired: Blue, White & Gentle Purple */
-  --background: 220 30% 98%;
-  --foreground: 222 47% 11%;
-  --border: 214 32% 91%;
-  
-  /* Brand colors */
-  --primary: 217 91% 60%;      /* Blue */
-  --primary-hover: 217 91% 50%;
-  --secondary: 263 70% 50%;   /* Gentle Purple */
-  --secondary-hover: 263 70% 40%;
-  --accent: 190 70% 45%;       /* Teal accent */
-  
-  /* Sidebar */
-  --sidebar-bg: 222 47% 11%;
-  --sidebar-text: 0 0% 100%;
-  --sidebar-hover: 217 91% 20%;
-  
-  /* Cards */
-  --card-bg: 0 0% 100%;
-  --card-border: 214 32% 91%;
+  --background: 222 47% 11%;      /* Dark slate */
+  --foreground: 210 40% 98%;      /* Light text */
+  --card: 217 33% 17%;           /* Dark card */
+  --card-foreground: 210 40% 98%;
+  --primary: 217 91% 60%;        /* Blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 263 70% 60%;       /* Purple */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 33% 22%;
+  --input: 217 33% 17%;
+  --ring: 217 91% 60%;
 }
 
 body {
-  color: hsl(var(--foreground));
   background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
