@@ -43,35 +43,54 @@ body {
   transition-duration: 150ms;
 }
 
-/* Synthflow-style Primary Button */
+/* Synthflow-style Primary Button - Enhanced */
 .btn-primary {
-  @apply bg-violet-600 text-white font-medium rounded-lg shadow-button 
-         hover:bg-violet-500 hover:scale-[1.02] active:scale-[0.98]
+  @apply bg-violet-600 text-white font-medium rounded-btn shadow-button-lg 
+         hover:bg-violet-500 hover:shadow-button-lg hover:scale-[1.02] active:scale-[0.98]
          transition-all duration-200 ease-out
-         px-5 py-3;
+         px-8 py-4;  /* Increased padding from Synthflow spec */
+  min-height: 48px;  /* Touch-friendly minimum */
 }
 
-/* Synthflow-style Secondary Button */
+/* Synthflow-style Secondary Button - Enhanced */
 .btn-secondary {
-  @apply bg-white text-slate-800 border border-slate-300 rounded-lg 
-         hover:bg-slate-50 transition-all font-medium px-5 py-3;
+  @apply bg-white text-slate-800 border-2 border-violet-600 font-medium rounded-btn 
+         hover:bg-violet-50 hover:border-violet-700 hover:scale-[1.02] active:scale-[0.98]
+         transition-all duration-200 ease-out px-8 py-4;
+  min-height: 48px;
 }
 
 /* Ghost button */
 .btn-ghost {
-  @apply bg-transparent text-violet-500 font-medium
-         hover:bg-violet-50 transition-all rounded-lg px-5 py-3;
+  @apply bg-transparent text-violet-400 font-medium
+         hover:bg-violet-900/30 hover:text-violet-300 transition-all rounded-btn px-8 py-4;
+  min-height: 48px;
 }
 
 /* Synthflow-style Card */
 .card {
   @apply bg-slate-800 rounded-2xl border border-slate-700 p-6;
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  @apply border-slate-600;
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
 }
 
 /* Feature card with Synthflow styling */
 .card-feature {
-  @apply bg-white rounded-2xl border border-slate-200 p-8;
+  @apply bg-white rounded-card border border-slate-200 p-8;
   box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+}
+
+.card-feature:hover {
+  @apply border-violet-300;
+  box-shadow: 0 8px 24px -4px rgba(91, 13, 213, 0.15);
+  transform: translateY(-4px);
 }
 
 /* Active nav item */
@@ -84,13 +103,32 @@ body {
   @apply bg-slate-800 p-6 rounded-xl border border-slate-700;
 }
 
-/* Heading styles */
+/* Heading styles - Synthflow type scale */
 h1 {
-  @apply text-2xl lg:text-3xl font-bold text-white;
+  @apply text-3xl lg:text-5xl font-semibold text-white;
+  line-height: 1.1;
 }
 
 h2 {
-  @apply text-xl lg:text-2xl font-semibold text-white;
+  @apply text-2xl lg:text-4xl font-semibold text-white;
+  line-height: 1.2;
+}
+
+h3 {
+  @apply text-xl lg:text-2xl font-medium text-white;
+  line-height: 1.3;
+}
+
+/* Body text */
+p {
+  @apply text-base lg:text-lg text-slate-300;
+  line-height: 1.5;
+}
+
+/* Small text */
+.text-small {
+  @apply text-sm text-slate-400;
+  line-height: 1.4;
 }
 
 /* Gradient backgrounds (Synthflow-style) */
@@ -100,4 +138,10 @@ h2 {
 
 .gradient-purple {
   background: linear-gradient(135deg, #1e0a45 0%, #502d95 100%);
+}
+
+/* Gradient text */
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #7e5ac6 0%, #5b0dd5 100%);
 }
