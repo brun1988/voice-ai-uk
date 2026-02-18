@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&display=swap');
 
 /* Synthflow-inspired theme - Exact colors from UX research */
 :root {
@@ -47,24 +49,30 @@ body {
   transition-duration: 150ms;
 }
 
-/* Synthflow-style Primary Button - Enhanced */
+/* Synthflow-style Primary Button - Exact Synthflow specs */
 .btn-primary {
-  @apply bg-violet-600 text-white font-medium rounded-lg shadow-button-lg 
-         hover:bg-violet-500 hover:shadow-button-lg hover:scale-[1.02] active:scale-[0.98]
+  @apply bg-violet-600 text-white font-medium text-base
+         hover:bg-violet-500 hover:scale-[1.02] active:scale-[0.98]
          transition-all duration-200 ease-out
-         px-10 py-5;  /* Synthflow-style large padding */
+         px-10 py-5;  /* Synthflow: padding: 1.375rem 2.5rem */
   min-height: 52px;  /* Touch-friendly minimum */
-  font-size: 1rem;
+  border-radius: 0.5rem;  /* Synthflow: border-radius: 0.5rem */
   font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 }
 
-/* Synthflow-style Secondary Button - Enhanced */
+.btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(91, 13, 213, 0.3), 0 4px 6px -2px rgba(91, 13, 213, 0.15);
+}
+
+/* Synthflow-style Secondary Button - Exact Synthflow specs */
 .btn-secondary {
-  @apply bg-white text-slate-800 border-2 border-violet-600 font-medium rounded-lg 
+  @apply bg-white text-slate-800 border-2 border-violet-600 font-medium text-base
          hover:bg-violet-50 hover:border-violet-700 hover:scale-[1.02] active:scale-[0.98]
-         transition-all duration-200 ease-out px-10 py-5;
+         transition-all duration-200 ease-out;
+  padding: 1.375rem 2.5rem;  /* Synthflow: padding: 1.375rem 2.5rem */
   min-height: 52px;
-  font-size: 1rem;
+  border-radius: 0.5rem;  /* Synthflow: border-radius: 0.5rem */
   font-weight: 500;
 }
 
@@ -75,29 +83,29 @@ body {
   min-height: 44px;
 }
 
-/* Synthflow-style Card */
+/* Synthflow-style Card - Subtle shadows per research */
 .card {
   @apply bg-slate-800 rounded-2xl border border-slate-700 p-6;
-  box-shadow: 0 2px 8px -2px rgba(0,0,0,0.15);  /* More subtle shadow */
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.15);  /* Synthflow: 0 4px 12px -4px */
   transition: all 0.3s ease;
 }
 
 .card:hover {
   @apply border-slate-600;
-  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.2);  /* Enhanced on hover */
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.25);  /* Enhanced on hover */
   transform: translateY(-2px);
 }
 
-/* Feature card with Synthflow styling */
+/* Feature card with Synthflow styling - Exact specs */
 .card-feature {
   @apply bg-white rounded-2xl border border-slate-200 p-8;
-  box-shadow: 0 2px 8px -2px rgba(0,0,0,0.06);  /* Subtle shadow */
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);  /* Synthflow exact: 0 4px 12px -4px */
   transition: all 0.3s ease;
 }
 
 .card-feature:hover {
   @apply border-violet-300;
-  box-shadow: 0 12px 32px -6px rgba(91, 13, 213, 0.2);  /* Purple tint on hover */
+  box-shadow: 0 12px 32px -6px rgba(91, 13, 213, 0.15);  /* Purple tint on hover */
   transform: translateY(-4px);
 }
 

@@ -34,7 +34,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['Reddit Mono', 'monospace'],
       },
       borderRadius: {
         'xl': '12px',
