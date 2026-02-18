@@ -6,6 +6,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
+    <>
+    <div className="bg-red-600 text-white text-center p-2 text-xl font-bold">DEPLOY TEST - IF YOU SEE RED, BUILD WORKS</div>
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16 lg:h-20">
@@ -43,5 +45,6 @@ export default function Navbar() {
         <a href="/dashboard" className="block w-full mt-2 px-4 py-3 text-center gradient-bg text-white rounded-xl">Start Free Trial</a>
       </div>
     </nav>
+    </>
   )
 }
