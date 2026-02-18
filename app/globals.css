@@ -98,7 +98,7 @@ body {
 
 /* Feature card with Synthflow styling - Exact specs */
 .card-feature {
-  @apply bg-white rounded-2xl border border-slate-200 p-8;
+  @apply bg-white rounded-[1rem] border border-slate-200 p-8;  /* Synthflow: border-radius: 1rem */
   box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);  /* Synthflow exact: 0 4px 12px -4px */
   transition: all 0.3s ease;
 }
@@ -107,6 +107,33 @@ body {
   @apply border-violet-300;
   box-shadow: 0 12px 32px -6px rgba(91, 13, 213, 0.15);  /* Purple tint on hover */
   transform: translateY(-4px);
+}
+
+/* Touch-friendly button minimum height (Synthflow research) */
+.btn-primary,
+.btn-secondary {
+  min-height: 52px;  /* Synthflow: 1.375rem = 22px padding + line-height ~52px */
+}
+
+@media (max-width: 767px) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 48px;  /* Mobile: 3rem minimum */
+    width: 100%;  /* Full-width on mobile */
+  }
+}
+
+/* Focus states for accessibility - Synthflow research */
+.btn-primary:focus,
+.btn-secondary:focus,
+.btn-ghost:focus {
+  @apply outline-none ring-2 ring-violet-400 ring-offset-2 ring-offset-slate-900;
+}
+
+/* Active button state - Synthflow research */
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
 }
 
 /* Active nav item */
@@ -133,6 +160,19 @@ h2 {
 h3 {
   @apply text-xl lg:text-2xl font-medium text-white;
   line-height: 1.3;
+}
+
+/* Mobile typography per Synthflow research */
+@media (max-width: 767px) {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
 }
 
 /* Body text */

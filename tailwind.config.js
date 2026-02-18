@@ -54,6 +54,12 @@ module.exports = {
         // Synthflow 8px grid
         '18': '4.5rem',
         '22': '5.5rem',
+        // Additional spacing from research
+        '60': '15rem',   // gap-60 = 60px
+        '80': '20rem',   // gap-80 = 80px
+      },
+      minHeight: {
+        'button': '44px',  // Touch-friendly minimum per research
       },
     },
   },
