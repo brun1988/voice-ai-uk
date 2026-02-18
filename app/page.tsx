@@ -316,7 +316,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="py-24 px-4 bg-gray-900">
-        <div className4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
          ="max-w- <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Never Miss a Call?
           </h2>
