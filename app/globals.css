@@ -2,231 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* Synthflow-inspired theme - Exact colors from UX research */
 :root {
-  /* Primary Colors - Synthflow Violet */
-  --primary: 263 70% 60%;       /* #5b0dd5 violet */
-  --primary-dark: 268 67% 26%; /* #1e0a45 darker purple */
-  --primary-light: 266 58% 65%; /* #7e5ac6 lighter */
-  
-  /* Secondary */
-  --secondary: 263 58% 47%;    /* #502d95 violet-600 */
-  
-  /* Backgrounds */
-  --background: 222 47% 11%;   /* #0F172A slate-900 (dark mode) */
-  --surface: 217 33% 17%;      /* #1E293B slate-800 */
-  --surface-elevated: 215 28% 22%;
-  --surface-light: 270 16% 95%; /* #f3f2f5 violet-1 (light background) */
-  
-  /* Text */
-  --foreground: 210 40% 98%;    /* #F1F5F9 slate-100 */
-  --foreground-muted: 215 20% 65%; /* #94A3B8 slate-400 */
-  --foreground-dark: 263 70% 8%; /* #110229 dark purple for light mode */
-  
-  /* Text */
-  --foreground: 210 40% 98%;    /* #F1F5F9 slate-100 */
-  --foreground-muted: 215 20% 65%; /* #94A3B8 slate-400 */
-  
-  /* Accents */
-  --accent: 160 84% 39%;        /* #10B981 emerald-500 (success) */
-  --destructive: 0 63% 31%;    /* Red for errors */
-  
-  /* Borders */
-  --border: 217 33% 22%;       /* Subtle border */
-  --border-light: 217 33% 27%;
+  --primary: #1877F2;
+  --accent: #9333EA;
+  --dark: #0F172A;
+  --light: #F8FAFC;
 }
 
 body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+/* Custom Animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Synthflow-style Primary Button - Exact Synthflow specs */
-.btn-primary {
-  @apply bg-violet-600 text-white font-medium text-base
-         hover:bg-violet-500 hover:scale-[1.02] active:scale-[0.98]
-         transition-all duration-200 ease-out
-         px-10 py-5;  /* Synthflow: padding: 1.375rem 2.5rem */
-  min-height: 52px;  /* Touch-friendly minimum */
-  border-radius: 0.5rem;  /* Synthflow: border-radius: 0.5rem */
-  font-weight: 500;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.8); }
 }
 
-.btn-primary:hover {
-  box-shadow: 0 10px 15px -3px rgba(91, 13, 213, 0.3), 0 4px 6px -2px rgba(91, 13, 213, 0.15);
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
-/* Synthflow-style Secondary Button - Exact Synthflow specs */
-.btn-secondary {
-  @apply bg-white text-slate-800 border-2 border-violet-600 font-medium text-base
-         hover:bg-violet-50 hover:border-violet-700 hover:scale-[1.02] active:scale-[0.98]
-         transition-all duration-200 ease-out;
-  padding: 1.375rem 2.5rem;  /* Synthflow: padding: 1.375rem 2.5rem */
-  min-height: 52px;
-  border-radius: 0.5rem;  /* Synthflow: border-radius: 0.5rem */
-  font-weight: 500;
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
-/* Ghost button */
-.btn-ghost {
-  @apply bg-transparent text-violet-400 font-medium
-         hover:bg-violet-900/30 hover:text-violet-300 transition-all rounded-lg px-6 py-3;
-  min-height: 44px;
+/* Gradient Background */
+.gradient-bg {
+  background: linear-gradient(-45deg, #1877F2, #9333EA, #7C3AED);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
 
-/* Synthflow-style Card - Subtle shadows per research - Exact values from research */
-.card {
-  @apply bg-slate-800 rounded-2xl border border-slate-700 p-6;
-  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.15);  /* Synthflow exact: 0 4px 12px -4px */
+/* Hero Gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+}
+
+/* Card Hover */
+.card-hover {
   transition: all 0.3s ease;
 }
 
-.card:hover {
-  @apply border-slate-600;
-  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.25);  /* Enhanced on hover */
-  transform: translateY(-2px);
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(147, 51, 234, 0.25);
 }
 
-/* Use case cards - Synthflow: border-radius: 1.25rem (20px) */
-.card-usecase {
-  @apply bg-slate-800 rounded-[1.25rem] border border-slate-700 p-6;
-  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+/* Glowing Button */
+.glowing-btn {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.card-usecase:hover {
-  @apply border-violet-500;
-  box-shadow: 0 12px 32px -6px rgba(91, 13, 213, 0.2);
-  transform: translateY(-4px);
+/* Wave Element */
+.wave-element {
+  animation: wave 6s ease-in-out infinite;
 }
 
-/* Feature card with Synthflow styling - Exact specs */
-.card-feature {
-  @apply bg-white rounded-[1rem] border border-slate-200 p-8;  /* Synthflow: border-radius: 1rem */
-  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);  /* Synthflow exact: 0 4px 12px -4px */
-  transition: all 0.3s ease;
+/* Blob */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
 }
 
-.card-feature:hover {
-  @apply border-violet-300;
-  box-shadow: 0 12px 32px -6px rgba(91, 13, 213, 0.15);  /* Purple tint on hover */
-  transform: translateY(-4px);
+/* Scenario Button Active */
+.scenario-btn.active {
+  background: linear-gradient(135deg, #1877F2, #9333EA);
+  color: white;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
 }
 
-/* Touch-friendly button minimum height (Synthflow research) */
-.btn-primary,
-.btn-secondary {
-  min-height: 52px;  /* Synthflow: 1.375rem = 22px padding + line-height ~52px */
-}
-
-@media (max-width: 767px) {
-  .btn-primary,
-  .btn-secondary {
-    min-height: 48px;  /* Mobile: 3rem minimum */
-    width: 100%;  /* Full-width on mobile */
-  }
-}
-
-/* Focus states for accessibility - Synthflow research - More visible */
-.btn-primary:focus,
-.btn-secondary:focus,
-.btn-ghost:focus,
+/* Focus states */
 button:focus,
 a:focus {
-  @apply outline-none;
-  box-shadow: 0 0 0 3px rgba(91, 13, 213, 0.5), 0 0 0 6px rgba(91, 13, 213, 0.2);
-}
-
-/* Explicit focus-visible for keyboard navigation */
-.btn-primary:focus-visible,
-.btn-secondary:focus-visible,
-.btn-ghost:focus-visible {
-  @apply outline-none ring-2 ring-violet-400 ring-offset-2 ring-offset-slate-900;
-}
-
-/* Active button state - Synthflow research */
-.btn-primary:active,
-.btn-secondary:active {
-  transform: scale(0.98);
-}
-
-/* Active nav item */
-.nav-active {
-  @apply bg-violet-700 text-white;
-}
-
-/* Stats box */
-.stat-box {
-  @apply bg-slate-800 p-6 rounded-xl border border-slate-700;
-}
-
-/* Heading styles - Synthflow type scale */
-h1 {
-  @apply text-3xl lg:text-5xl font-semibold text-white;
-  line-height: 1.1;
-}
-
-h2 {
-  @apply text-2xl lg:text-4xl font-semibold text-white;
-  line-height: 1.2;
-}
-
-h3 {
-  @apply text-xl lg:text-2xl font-medium text-white;
-  line-height: 1.3;
-}
-
-/* Mobile typography per Synthflow research */
-@media (max-width: 767px) {
-  h1 {
-    @apply text-4xl;
-  }
-  h2 {
-    @apply text-3xl;
-  }
-  h3 {
-    @apply text-xl;
-  }
-}
-
-/* Body text */
-p {
-  @apply text-base lg:text-lg text-slate-300;
-  line-height: 1.5;
-}
-
-/* Small text */
-.text-small {
-  @apply text-sm text-slate-400;
-  line-height: 1.4;
-}
-
-/* Gradient backgrounds (Synthflow-style) */
-.gradient-hero {
-  background: linear-gradient(176deg, #1e0a45, #200b4b 23%, #502d95 73%, #7e5ac6 100%);
-}
-
-.gradient-purple {
-  background: linear-gradient(135deg, #1e0a45 0%, #502d95 100%);
-}
-
-/* Gradient text */
-.text-gradient {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(135deg, #7e5ac6 0%, #5b0dd5 100%);
+  outline: none;
 }
