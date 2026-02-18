@@ -3,9 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --border: 214.3 31.8% 91.4%;
+  /* Synthflow-inspired: Blue, White & Gentle Purple */
+  --background: 220 30% 98%;
+  --foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  
+  /* Brand colors */
+  --primary: 217 91% 60%;      /* Blue */
+  --primary-hover: 217 91% 50%;
+  --secondary: 263 70% 50%;   /* Gentle Purple */
+  --secondary-hover: 263 70% 40%;
+  --accent: 190 70% 45%;       /* Teal accent */
+  
+  /* Sidebar */
+  --sidebar-bg: 222 47% 11%;
+  --sidebar-text: 0 0% 100%;
+  --sidebar-hover: 217 91% 20%;
+  
+  /* Cards */
+  --card-bg: 0 0% 100%;
+  --card-border: 214 32% 91%;
 }
 
 body {
