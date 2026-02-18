@@ -1,179 +1,218 @@
 import Link from 'next/link'
-import { Phone, Bot, Calendar, Shield, BarChart3, Globe, ArrowRight, Star, Check, Play } from 'lucide-react'
+import { Phone, Bot, Calendar, Shield, BarChart3, Globe, ArrowRight, Star, Check, Play, Zap, MessageCircle, Clock, TrendingUp } from 'lucide-react'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0F172A] text-white">
+    <main className="min-h-screen bg-[#0A0A0F] text-white overflow-x-hidden">
+      {/* Animated background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[150px]" />
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/90 backdrop-blur-xl border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0F]/80 backdrop-blur-2xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="w-9 h-9 bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <Phone className="h-5 w-5 text-white" />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-md opacity-50" />
+                <div className="relative w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <Phone className="h-5 w-5 text-white" />
+                </div>
               </div>
-              <span className="ml-3 text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Voice AI UK</span>
+              <span className="ml-3 text-lg font-semibold text-white">Voice AI UK</span>
             </div>
             <div className="hidden md:flex items-center gap-1">
-              {['Features', 'Pricing', 'Templates'].map((item) => (
-                <a key={item} href={item === 'Features' ? '#features' : item === 'Pricing' ? '#pricing' : '#templates'} className="px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">
+              {['Features', 'Pricing'].map((item) => (
+                <a key={item} href={item === 'Features' ? '#features' : '#pricing'} className="px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all">
                   {item}
                 </a>
               ))}
-              <Link href="/dashboard" className="ml-2 px-4 py-2.5 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white text-sm font-medium rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all hover:-translate-y-0.5">
+              <Link href="/dashboard" className="ml-2 px-5 py-2.5 bg-white text-black text-sm font-semibold rounded-lg hover:bg-slate-200 transition-all hover:scale-105">
                 Get Started
               </Link>
             </div>
-            {/* Mobile menu button */}
-            <button className="md:hidden p-2 text-slate-300">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-[#0F172A] to-[#0F172A]" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-slate-300 mb-8 backdrop-blur-sm">
-              <Star className="h-4 w-4 text-yellow-400" fill="currentColor" />
-              Trusted by 500+ UK businesses
-            </div>
-            
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                Never Miss a Call Again
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Your AI Receptionist works 24/7 to answer calls, qualify leads, and book appointments — so you can focus on running your business.
-            </p>
-            
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Link 
-                href="/dashboard"
-                className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white rounded-xl font-semibold text-lg shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 transition-all hover:-translate-y-1"
-              >
-                Start Free Trial
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button className="group inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/5 transition-all backdrop-blur-sm">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </button>
-            </div>
-            
-            <p className="text-sm text-slate-500">
-              No credit card required • 14-day free trial • Cancel anytime
-            </p>
+      <section className="relative pt-40 pb-24 px-4 z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-slate-300 mb-8 backdrop-blur-sm">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            Now with GPT-4 integration
           </div>
+          
+          {/* Headline */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <span className="text-white">Never Miss a </span>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Call Again
+            </span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Your AI Receptionist works 24/7 to answer calls, qualify leads, and book appointments — so you can focus on running your business.
+          </p>
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <Link 
+              href="/dashboard"
+              className="group inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-xl font-semibold text-lg hover:bg-slate-200 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+            >
+              Start Free Trial
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <button className="group inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/5 transition-all backdrop-blur-sm">
+              <Play className="mr-2 h-5 w-5" />
+              Watch Demo
+            </button>
+          </div>
+          
+          {/* Trust */}
+          <p className="text-sm text-slate-500">
+            No credit card required • 14-day free trial • Cancel anytime
+          </p>
+        </div>
 
-          {/* Demo Conversation Card */}
-          <div className="mt-16 max-w-md mx-auto relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
-            <div className="relative bg-[#1E293B] rounded-2xl border border-white/10 p-6 shadow-2xl">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs text-slate-500 uppercase tracking-wider">AI Assistant Demo</span>
+        {/* Demo Card */}
+        <div className="mt-16 max-w-lg mx-auto relative">
+          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/30 via-purple-500/20 to-cyan-500/30 rounded-3xl blur-xl" />
+          <div className="relative bg-[#111118] rounded-2xl border border-white/10 p-6 shadow-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs text-slate-500 uppercase tracking-wider">Live Demo</span>
               </div>
-              <div className="space-y-4">
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 shadow-lg">AI</div>
-                  <div className="bg-white/10 rounded-2xl rounded-tl-none p-4 text-sm text-slate-200">
-                    Hello! I'm the AI receptionist for Premier Properties. How can I help you today?
-                  </div>
+              <MessageCircle className="w-4 h-4 text-slate-600" />
+            </div>
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
+                <div className="bg-white/10 rounded-2xl rounded-tl-none p-4 text-sm text-slate-200">
+                  Hello! I'm the AI receptionist for Premier Properties. How can I help you today?
                 </div>
-                <div className="flex gap-3 flex-row-reverse">
-                  <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">You</div>
-                  <div className="bg-gradient-to-r from-[#3B82F6] to-[#6366F1] rounded-2xl rounded-tr-none p-4 text-sm text-white">
-                    Hi, I'm interested in viewing a property in London
-                  </div>
+              </div>
+              <div className="flex gap-3 flex-row-reverse">
+                <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-white text-xs font-bold">You</div>
+                <div className="bg-white text-black rounded-2xl rounded-tr-none p-4 text-sm">
+                  Hi, I'm interested in viewing a property in London
                 </div>
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 shadow-lg">AI</div>
-                  <div className="bg-white/10 rounded-2xl rounded-tl-none p-4 text-sm text-slate-200">
-                    That's great! I can help you schedule a viewing. What type of property are you looking for?
-                  </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
+                <div className="bg-white/10 rounded-2xl rounded-tl-none p-4 text-sm text-slate-200">
+                  That's great! I have a beautiful 3-bedroom flat available. Would you like to schedule a viewing?
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Stats */}
-          <div className="mt-12 flex justify-center gap-16 text-center">
-            {[
-              { value: '50K+', label: 'Calls Handled' },
-              { value: '500hrs', label: 'Time Saved' },
-              { value: '99.9%', label: 'Uptime' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">{stat.value}</div>
-                <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
+        {/* Stats */}
+        <div className="mt-16 flex flex-wrap justify-center gap-8 md:gap-16">
+          {[
+            { value: '50K+', label: 'Calls Handled', icon: Phone },
+            { value: '500hrs', label: 'Time Saved', icon: Clock },
+            { value: '99.9%', label: 'Uptime', icon: Zap },
+            { value: '500+', label: 'UK Businesses', icon: TrendingUp },
+          ].map((stat, i) => (
+            <div key={i} className="text-center group">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <stat.icon className="w-4 h-4 text-blue-400" />
+                <div className="text-3xl font-bold text-white">{stat.value}</div>
               </div>
-            ))}
-          </div>
+              <div className="text-sm text-slate-500">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="py-24 px-4 relative">
+      {/* Features - Bento Grid Style */}
+      <section id="features" className="py-24 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                Everything you need
-              </span>
+              <span className="text-white">Everything you need to </span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">scale</span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Powerful features to automate your phone lines and never miss a lead.</p>
+            <p className="text-slate-400 max-w-xl mx-auto">Powerful features to automate your phone lines and never miss a lead.</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: Bot, title: 'AI Voice Agents', desc: 'Natural-sounding AI that understands context and handles conversations intelligently.', color: 'blue' },
-              { icon: Calendar, title: 'Smart Scheduling', desc: 'Automatically check availability and book appointments in your calendar.', color: 'purple' },
-              { icon: Shield, title: 'UK Phone Numbers', desc: 'Get a dedicated +44 number that works 24/7, even when you\'re closed.', color: 'green' },
-              { icon: BarChart3, title: 'Analytics', desc: 'Track call volume, conversion rates, and agent performance.', color: 'orange' },
-              { icon: Globe, title: 'Multi-Language', desc: 'Support for English, Welsh, and other languages.', color: 'pink' },
-              { icon: Phone, title: 'Easy Setup', desc: 'Set up in minutes with our guided wizard. No coding required.', color: 'cyan' },
-            ].map((feature, i) => (
-              <div key={i} className="group bg-[#1E293B]/50 border border-white/5 rounded-2xl p-6 hover:bg-[#1E293B] hover:border-white/10 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20">
-                <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <feature.icon className={`h-6 w-6 text-${feature.color}-400`} />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Large card */}
+            <div className="md:col-span-2 bg-gradient-to-br from-[#15151F] to-[#1A1A25] border border-white/10 rounded-3xl p-8 hover:border-blue-500/30 transition-all group">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Bot className="w-7 h-7 text-blue-400" />
               </div>
-            ))}
+              <h3 className="text-xl font-semibold text-white mb-2">AI Voice Agents</h3>
+              <p className="text-slate-400">Natural-sounding AI that understands context and handles conversations intelligently. Powered by GPT-4.</p>
+              <div className="mt-6 flex gap-2">
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">Real-time</span>
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">24/7</span>
+              </div>
+            </div>
+
+            {/* Small card */}
+            <div className="bg-gradient-to-br from-[#15151F] to-[#1A1A25] border border-white/10 rounded-3xl p-8 hover:border-purple-500/30 transition-all group">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Calendar className="w-7 h-7 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Smart Scheduling</h3>
+              <p className="text-slate-400 text-sm">Auto-check availability and book appointments.</p>
+            </div>
+
+            {/* Small card */}
+            <div className="bg-gradient-to-br from-[#15151F] to-[#1A1A25] border border-white/10 rounded-3xl p-8 hover:border-green-500/30 transition-all group">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Shield className="w-7 h-7 text-green-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">UK Numbers</h3>
+              <p className="text-slate-400 text-sm">Get a +44 number that works 24/7.</p>
+            </div>
+
+            {/* Large card */}
+            <div className="md:col-span-2 bg-gradient-to-br from-[#15151F] to-[#1A1A25] border border-white/10 rounded-3xl p-8 hover:border-cyan-500/30 transition-all group">
+              <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <BarChart3 className="w-7 h-7 text-cyan-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Analytics Dashboard</h3>
+              <p className="text-slate-400">Track call volume, conversion rates, and agent performance with real-time analytics.</p>
+              <div className="mt-6 h-24 flex items-end gap-2">
+                {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+                  <div key={i} className="flex-1 bg-gradient-to-t from-blue-500/50 to-blue-500/20 rounded-t" style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </div>
+
+            {/* Small card */}
+            <div className="bg-gradient-to-br from-[#15151F] to-[#1A1A25] border border-white/10 rounded-3xl p-8 hover:border-orange-500/30 transition-all group">
+              <div className="w-14 h-14 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Globe className="w-7 h-7 text-orange-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Multi-Language</h3>
+              <p className="text-slate-400 text-sm">English, Welsh & more.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-24 px-4 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto">
+      <section id="pricing" className="py-24 px-4 relative z-10">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                Simple pricing
-              </span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Simple pricing</h2>
             <p className="text-slate-400">Start free, upgrade when you're ready</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Starter */}
-            <div className="bg-[#1E293B]/50 border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all">
+            <div className="bg-[#111118] border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all">
               <h3 className="text-lg font-semibold text-white mb-2">Starter</h3>
               <div className="flex items-baseline gap-1 mb-4">
                 <span className="text-4xl font-bold text-white">£0</span>
@@ -192,9 +231,9 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Pro */}
-            <div className="bg-gradient-to-b from-[#1E293B] to-[#1E293B]/50 border-2 border-[#3B82F6]/50 rounded-2xl p-8 relative transform scale-105 shadow-2xl shadow-blue-500/10">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white text-xs font-medium rounded-full">
+            {/* Pro - Featured */}
+            <div className="bg-gradient-to-b from-[#15151F] to-[#111118] border-2 border-blue-500/30 rounded-3xl p-8 relative transform md:-translate-y-4 shadow-2xl shadow-blue-500/10">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-medium rounded-full">
                 Most Popular
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Professional</h3>
@@ -210,13 +249,13 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="/dashboard" className="block w-full py-3 text-center bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all font-medium">
+              <Link href="/dashboard" className="block w-full py-3 text-center bg-white text-black rounded-xl font-semibold hover:bg-slate-200 transition-all">
                 Start Free Trial
               </Link>
             </div>
 
             {/* Enterprise */}
-            <div className="bg-[#1E293B]/50 border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all">
+            <div className="bg-[#111118] border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all">
               <h3 className="text-lg font-semibold text-white mb-2">Enterprise</h3>
               <div className="flex items-baseline gap-1 mb-4">
                 <span className="text-4xl font-bold text-white">£199</span>
@@ -239,31 +278,29 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+      <section className="py-24 px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-3xl" />
+          <div className="relative bg-[#111118] border border-white/10 rounded-3xl p-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Ready to automate your phone lines?
-            </span>
-          </h2>
-          <p className="text-slate-400 text-lg mb-8">
-            Join hundreds of UK businesses already using Voice AI UK.
-          </p>
-          <Link 
-            href="/dashboard"
-            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#3B82F6] to-[#6366F1] text-white rounded-xl font-semibold text-lg shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 transition-all hover:-translate-y-1"
-          >
-            Start Free Trial
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+            </h2>
+            <p className="text-slate-400 text-lg mb-8">
+              Join hundreds of UK businesses already using Voice AI UK.
+            </p>
+            <Link 
+              href="/dashboard"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-xl font-semibold text-lg hover:scale-105 transition-transform"
+            >
+              Start Free Trial
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-white/5">
+      <footer className="py-8 px-4 border-t border-white/5">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-slate-500 text-sm">© 2026 Voice AI UK. All rights reserved.</p>
         </div>
