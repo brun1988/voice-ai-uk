@@ -4,26 +4,29 @@
 
 /* Synthflow-inspired theme - Exact colors from UX research */
 :root {
-  /* Primary Colors */
-  --primary: 217 91% 60%;         /* #2563EB blue-600 */
-  --primary-dark: 224 89% 38%;   /* #1E40AF blue-800 */
-  --secondary: 263 70% 60%;      /* #7C3AED violet-600 */
+  /* Primary Colors - Synthflow Violet */
+  --primary: 263 70% 60%;       /* #5b0dd5 violet */
+  --primary-dark: 268 67% 26%; /* #1e0a45 darker purple */
+  --primary-light: 266 58% 65%; /* #7e5ac6 lighter */
+  
+  /* Secondary */
+  --secondary: 263 58% 47%;    /* #502d95 violet-600 */
   
   /* Backgrounds */
-  --background: 222 47% 11%;    /* #0F172A slate-900 (dark mode) */
-  --surface: 217 33% 17%;        /* #1E293B slate-800 */
+  --background: 222 47% 11%;   /* #0F172A slate-900 (dark mode) */
+  --surface: 217 33% 17%;      /* #1E293B slate-800 */
   --surface-elevated: 215 28% 22%;
   
   /* Text */
-  --foreground: 210 40% 98%;     /* #F1F5F9 slate-100 */
+  --foreground: 210 40% 98%;    /* #F1F5F9 slate-100 */
   --foreground-muted: 215 20% 65%; /* #94A3B8 slate-400 */
   
   /* Accents */
-  --accent: 160 84% 39%;         /* #10B981 emerald-500 (success) */
-  --destructive: 0 63% 31%;      /* Red for errors */
+  --accent: 160 84% 39%;        /* #10B981 emerald-500 (success) */
+  --destructive: 0 63% 31%;    /* Red for errors */
   
   /* Borders */
-  --border: 217 33% 22%;         /* Subtle border */
+  --border: 217 33% 22%;       /* Subtle border */
   --border-light: 217 33% 27%;
 }
 
@@ -40,23 +43,40 @@ body {
   transition-duration: 150ms;
 }
 
-/* Custom button styles */
+/* Synthflow-style Primary Button */
 .btn-primary {
-  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg shadow-button hover:from-blue-400 hover:to-blue-500 hover:scale-[1.02] transition-all font-medium px-4 py-2;
+  @apply bg-violet-600 text-white font-medium rounded-lg shadow-button 
+         hover:bg-violet-500 hover:scale-[1.02] active:scale-[0.98]
+         transition-all duration-200 ease-out
+         px-5 py-3;
 }
 
+/* Synthflow-style Secondary Button */
 .btn-secondary {
-  @apply bg-white text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-50 transition-all font-medium px-4 py-2;
+  @apply bg-white text-slate-800 border border-slate-300 rounded-lg 
+         hover:bg-slate-50 transition-all font-medium px-5 py-3;
 }
 
-/* Card styles */
+/* Ghost button */
+.btn-ghost {
+  @apply bg-transparent text-violet-500 font-medium
+         hover:bg-violet-50 transition-all rounded-lg px-5 py-3;
+}
+
+/* Synthflow-style Card */
 .card {
   @apply bg-slate-800 rounded-2xl border border-slate-700 p-6;
 }
 
+/* Feature card with Synthflow styling */
+.card-feature {
+  @apply bg-white rounded-2xl border border-slate-200 p-8;
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.07);
+}
+
 /* Active nav item */
 .nav-active {
-  @apply bg-[#1E40AF] text-white;
+  @apply bg-violet-700 text-white;
 }
 
 /* Stats box */
@@ -71,4 +91,13 @@ h1 {
 
 h2 {
   @apply text-xl lg:text-2xl font-semibold text-white;
+}
+
+/* Gradient backgrounds (Synthflow-style) */
+.gradient-hero {
+  background: linear-gradient(176deg, #1e0a45, #200b4b 23%, #502d95 73%, #7e5ac6 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #1e0a45 0%, #502d95 100%);
 }
