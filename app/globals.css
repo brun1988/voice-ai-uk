@@ -2,30 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Synthflow-inspired theme */
+/* Synthflow-inspired theme - Exact colors from UX research */
 :root {
-  --background: 222 47% 11%;      /* Dark slate */
-  --foreground: 210 40% 98%;      /* Light text */
-  --card: 217 33% 17%;           /* Dark card */
-  --card-foreground: 210 40% 98%;
-  --primary: 217 91% 60%;        /* Blue */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 263 70% 60%;       /* Purple */
-  --secondary-foreground: 0 0% 100%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 63% 31%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217 33% 22%;
-  --input: 217 33% 17%;
-  --ring: 217 91% 60%;
+  /* Primary Colors */
+  --primary: 217 91% 60%;         /* #2563EB blue-600 */
+  --primary-dark: 224 89% 38%;   /* #1E40AF blue-800 */
+  --secondary: 263 70% 60%;      /* #7C3AED violet-600 */
+  
+  /* Backgrounds */
+  --background: 222 47% 11%;    /* #0F172A slate-900 (dark mode) */
+  --surface: 217 33% 17%;        /* #1E293B slate-800 */
+  --surface-elevated: 215 28% 22%;
+  
+  /* Text */
+  --foreground: 210 40% 98%;     /* #F1F5F9 slate-100 */
+  --foreground-muted: 215 20% 65%; /* #94A3B8 slate-400 */
+  
+  /* Accents */
+  --accent: 160 84% 39%;         /* #10B981 emerald-500 (success) */
+  --destructive: 0 63% 31%;      /* Red for errors */
+  
+  /* Borders */
+  --border: 217 33% 22%;         /* Subtle border */
+  --border-light: 217 33% 27%;
 }
 
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* Smooth transitions */
@@ -33,4 +38,37 @@ body {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg shadow-button hover:from-blue-400 hover:to-blue-500 hover:scale-[1.02] transition-all font-medium px-4 py-2;
+}
+
+.btn-secondary {
+  @apply bg-white text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-50 transition-all font-medium px-4 py-2;
+}
+
+/* Card styles */
+.card {
+  @apply bg-slate-800 rounded-2xl border border-slate-700 p-6;
+}
+
+/* Active nav item */
+.nav-active {
+  @apply bg-[#1E40AF] text-white;
+}
+
+/* Stats box */
+.stat-box {
+  @apply bg-slate-800 p-6 rounded-xl border border-slate-700;
+}
+
+/* Heading styles */
+h1 {
+  @apply text-2xl lg:text-3xl font-bold text-white;
+}
+
+h2 {
+  @apply text-xl lg:text-2xl font-semibold text-white;
 }
